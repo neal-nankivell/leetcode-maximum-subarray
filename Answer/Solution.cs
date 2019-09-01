@@ -24,23 +24,19 @@ namespace Answer
         {
             int max = nums[0];
 
+            int runningTotal = 0;
             for (int i = 0; i < nums.Length; i++)
             {
-                int currentSum = nums[i];
+                runningTotal += nums[i];
 
-                if (currentSum > max)
+                if (runningTotal > max)
                 {
-                    max = currentSum;
+                    max = runningTotal;
                 }
 
-                for (int j = i + 1; j < nums.Length; j++)
+                if (runningTotal < 0)
                 {
-                    currentSum += nums[j];
-
-                    if (currentSum > max)
-                    {
-                        max = currentSum;
-                    }
+                    runningTotal = 0;
                 }
             }
 
