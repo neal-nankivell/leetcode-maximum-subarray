@@ -22,7 +22,29 @@ namespace Answer
         */
         public int MaxSubArray(int[] nums)
         {
-            throw new NotImplementedException();
+            int max = nums[0];
+
+            for (int i = 0; i < nums.Length; i++)
+            {
+                int currentSum = nums[i];
+
+                if (currentSum > max)
+                {
+                    max = currentSum;
+                }
+
+                for (int j = i + 1; j < nums.Length; j++)
+                {
+                    currentSum += nums[j];
+
+                    if (currentSum > max)
+                    {
+                        max = currentSum;
+                    }
+                }
+            }
+
+            return max;
         }
     }
 }
